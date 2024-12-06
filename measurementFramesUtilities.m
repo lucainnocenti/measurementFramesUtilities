@@ -1,5 +1,10 @@
 BeginPackage["measurementFramesUtilities`", {"QM`"}]
 
+identityAndTracelessOpBasis;
+vectorizeOperator;
+devectorizeOperator;
+frameOperator;
+dualMeasurementFrame;
 
 
 Begin["`Private`"]
