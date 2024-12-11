@@ -52,6 +52,22 @@ devectorizeOperator[opVec_] := Sum[
     {i, Length@opVec}
 ];
 
+
+basis2qubitPauliMatrices = Flatten[#, 1]& @ Table[
+    KroneckerProduct[ PauliMatrix[i], PauliMatrix[j] ],
+    {i, 0, 3},
+    {j, 0, 3}
+] / 2;
+
+vectorize2QubitsWithPaulis[dm_] := Table[
+    opDot[op, dm],
+    {op, basis2qubitPauliMatrices}
+];
+devectorize2QubitsWithPaulis[opVec_] := Sum[
+    opVec[[i]] * basis2qubitPauliMatrices[[i]],
+    {i, Length@opVec}
+];
+
 (* computes the canonical frame operator in the standard basis of matrices |i><j| *)
 
 
